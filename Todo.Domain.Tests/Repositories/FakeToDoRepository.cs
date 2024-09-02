@@ -22,5 +22,25 @@ namespace Todo.Domain.Testes.Repositories
         {
             return new TodoItem("", DateTime.Now, "");
         }
+
+        public IEnumerable<TodoItem> GetAll(string User)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<TodoItem> GetAllDone(string User)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<TodoItem> GetAllUnDone(string User)
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerable<TodoItem> GetByPeriod(string User, DateTime date, bool done)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
