@@ -19,6 +19,30 @@ namespace Todo.Domain.Api.Controllers
             return repository.GetAll("andrezinho");
         }
 
+        [Route("")]
+        [HttpPost]
+        public GenericCommandResult Create(
+            [FromBody] CreateTodoCommand command,
+            [FromServices] ToDoHandler handler
+        )
+        {
+            command.User = "andrezinho";
+            return (GenericCommandResult)handler.Handle(command);
+
+        }
+
+        [Route("")]
+        [HttpPut]
+        public GenericCommandResult Update(
+           [FromBody] UpdateTodoCommand command,
+           [FromServices] ToDoHandler handler
+       )
+        {
+            command.User = "andrezinho";
+            return (GenericCommandResult)handler.Handle(command);
+
+        }
+
         [Route("done")]
         [HttpGet]
         public IEnumerable<TodoItem> GetAllDone(
@@ -71,30 +95,6 @@ namespace Todo.Domain.Api.Controllers
         )
         {
             return repository.GetByPeriod("andrezinho", DateTime.Now.Date.AddDays(1), false);
-        }
-
-        [Route("")]
-        [HttpPost]
-        public GenericCommandResult Create(
-            [FromBody]CreateTodoCommand command,
-            [FromServices]ToDoHandler handler
-        )
-        {
-            command.User = "andrezinho";
-            return (GenericCommandResult)handler.Handle(command);
-            
-        }
-
-        [Route("")]
-        [HttpPut]
-        public GenericCommandResult Update(
-           [FromBody] UpdateTodoCommand command,
-           [FromServices] ToDoHandler handler
-       )
-        {
-            command.User = "andrezinho";
-            return (GenericCommandResult)handler.Handle(command);
-
         }
 
         [Route("mark-as-done")]
